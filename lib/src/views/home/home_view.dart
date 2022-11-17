@@ -9,7 +9,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: PersonsRepository().getAllPersons(1),
+        future: PersonsRepository().getAllPersons(page: 1),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

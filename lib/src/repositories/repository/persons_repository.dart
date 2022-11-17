@@ -12,7 +12,7 @@ class PersonsRepository extends IPersonsRepository {
   PersonsRepository() : super(networking: Networking(url: Const.apiURL));
 
   @override
-  Future<PersonsModel> getAllPersons(int page) async {
+  Future<PersonsModel> getAllPersons({int page = 0}) async {
     Response response = await networking.get(path: '?nat=br&format=json&results=20&page=$page');
 
     switch (response.statusCode) {
@@ -50,7 +50,40 @@ class PersonsRepository extends IPersonsRepository {
   }
 
   @override
-  Future<PersonsModel> getPersonsByGender(int page, Gender gender) {
-    throw UnimplementedError();
+  Future<PersonsModel> getPersonsByGender({int page = 0, required Gender gender}) async {
+    Response response = await networking.get(path: '?nat=br&format=json&results=20&page=$page&inc=${gender.name}');
+
+    switch (response.statusCode) {
+      case 200:
+        // All Right return the Persons Model
+        return PersonsModel.fromJson(jsonDecode(response.body));
+      case 400:
+        // On Error Status Code 400
+        throw BadRequestNetworkingException(message: 'Bad Request');
+      case 401:
+        // On Error Status Code 401
+        throw UnauthorizedNetworkingException(message: 'Unauthorized');
+      case 403:
+        // On Error Status Code 403
+        throw ForbiddenNetworkingException(message: 'Forbidden');
+      case 404:
+        // On Error Status Code 404
+        throw NotFoundNetworkingException(message: 'Not Found');
+      case 500:
+        // On Error Status Code 500
+        throw InternalErrorNetworkingException(message: 'Internal Server Error');
+      case 502:
+        // On Error Status Code 502
+        throw BadGetwayNetworkingException(message: 'Bad Getway');
+      case 503:
+        // On Error Status Code 503
+        throw ServiceUnavailableNetworkingException(message: 'Service Unavailable');
+      case 504:
+        // On Error Status Code 504
+        throw GetwayTimeoutNetworkingException(message: 'Getway Timeout');
+      default:
+        // On No Internet Connection Error
+        throw NotInternetConnectionNetworkingException(message: 'Not Have Internet');
+    }
   }
 }
