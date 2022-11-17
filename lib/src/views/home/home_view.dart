@@ -34,31 +34,37 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
+  Widget _filterButton() {
+    return IconButton(onPressed: () {}, icon: const Icon(Icons.filter_list));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(
-      child: Observer(builder: (_) {
-        //
+    return Scaffold(
+        appBar: AppBar(title: const Text('Lista de Usuários'), actions: [_filterButton()]),
+        body: SafeArea(
+          child: Observer(builder: (_) {
+            //
 
-        // =====================================================================
-        // Show Persons List
-        // =====================================================================
-        if (personStore.state == StoreState.loaded) {
-          return PersonListView(personStore: personStore);
-        }
+            // =====================================================================
+            // Show Persons List
+            // =====================================================================
+            if (personStore.state == StoreState.loaded) {
+              return PersonListView(personStore: personStore);
+            }
 
-        // =====================================================================
-        // Show Loading Widget
-        // =====================================================================
-        if (personStore.state == StoreState.isLoading) {
-          return _showLoadingWidget();
-        }
+            // =====================================================================
+            // Show Loading Widget
+            // =====================================================================
+            if (personStore.state == StoreState.isLoading) {
+              return _showLoadingWidget();
+            }
 
-        // =====================================================================
-        // Show Error Widget
-        // =====================================================================
-        return _showErrorMessage();
-      }),
-    ));
+            // =====================================================================
+            // Show Error Widget
+            // =====================================================================
+            return _showErrorMessage();
+          }),
+        ));
   }
 }

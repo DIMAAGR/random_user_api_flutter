@@ -28,7 +28,7 @@ class PersonListView extends StatelessWidget {
                 title: Text('${personStore.persons[index].name!.first!} ${personStore.persons[index].name!.last!}'),
                 subtitle: Text(personStore.persons[index].email!),
               ),
-              const Divider(color: Colors.black45),
+              const Divider(indent: 96),
             ],
           );
         });
