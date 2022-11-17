@@ -1,26 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:random_user_api_flutter/src/models/persons_model.dart';
-import 'package:random_user_api_flutter/src/repositories/repository/persons_repository.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class HomeView extends StatelessWidget {
+import 'package:random_user_api_flutter/src/core/main/get_it.dart';
+import 'package:random_user_api_flutter/src/view_models/person_store.dart';
+import 'package:random_user_api_flutter/src/views/home/components/person_list_view.dart';
+
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: PersonsRepository().getAllPersons(page: 1),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.results!.length,
-              itemBuilder: (context, index) => Text('${snapshot.data!.results![index].name!.first!} ${snapshot.data!.results![index].name!.last!}'),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  PersonStore personStore = getIt<PersonStore>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    personStore.doGetAllUsers();
+  }
+
+  Widget _showLoadingWidget() => const Center(child: CircularProgressIndicator(color: Colors.grey, strokeWidth: 5));
+
+  Widget _showErrorMessage() {
+    return const Center(
+      child: Text(
+        'Algum erro ocorreu\nPor favor, tente novamente mais tarde!',
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: SafeArea(
+      child: Observer(builder: (_) {
+        //
+
+        // =====================================================================
+        // Show Persons List
+        // =====================================================================
+        if (personStore.state == StoreState.loaded) {
+          return PersonListView(personStore: personStore);
+        }
+
+        // =====================================================================
+        // Show Loading Widget
+        // =====================================================================
+        if (personStore.state == StoreState.isLoading) {
+          return _showLoadingWidget();
+        }
+
+        // =====================================================================
+        // Show Error Widget
+        // =====================================================================
+        return _showErrorMessage();
+      }),
+    ));
   }
 }

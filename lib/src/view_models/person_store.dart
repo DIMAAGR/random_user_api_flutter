@@ -7,7 +7,7 @@ part 'person_store.g.dart';
 // ignore: library_private_types_in_public_api
 class PersonStore = _PersonStore with _$PersonStore;
 
-enum State { error, isLoading, loaded, uninitialized }
+enum StoreState { error, isLoading, loaded, uninitialized }
 
 abstract class _PersonStore with Store {
   final PersonsRepository _repository = PersonsRepository();
@@ -19,12 +19,14 @@ abstract class _PersonStore with Store {
   List<Results> persons = [];
 
   @observable
-  State state = State.uninitialized;
+  StoreState state = StoreState.uninitialized;
 
   @action
   Future<void> doGetAllUsers() async {
+    state = StoreState.isLoading;
     PersonsModel model = await _repository.getAllPersons();
     persons += model.results!;
+    state = StoreState.loaded;
   }
 
   @action
