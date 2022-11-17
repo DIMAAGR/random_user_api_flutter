@@ -4,7 +4,10 @@ import 'package:random_user_api_flutter/src/repositories/repository/persons_repo
 
 part 'person_store.g.dart';
 
+// ignore: library_private_types_in_public_api
 class PersonStore = _PersonStore with _$PersonStore;
+
+enum State { error, isLoading, loaded, uninitialized }
 
 abstract class _PersonStore with Store {
   final PersonsRepository _repository = PersonsRepository();
@@ -14,6 +17,9 @@ abstract class _PersonStore with Store {
 
   @observable
   List<Results> persons = [];
+
+  @observable
+  State state = State.uninitialized;
 
   @action
   Future<void> doGetAllUsers() async {
