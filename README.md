@@ -8,7 +8,6 @@ O projeto usa a api do RandomUserAPI: https://randomuser.me/
 
 ## O que tem nesse projeto?
 Nesse projeto você encontra:
- - Testes Unitários
  - Uso do GetIt e MobX para Gerência de Estado
  - Repository Pattern
 

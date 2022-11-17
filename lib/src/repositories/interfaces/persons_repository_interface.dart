@@ -8,6 +8,6 @@ abstract class IPersonsRepository {
 
   IPersonsRepository({required this.networking});
 
-  Future<PersonsModel> getAllPersons();
-  Future<PersonsModel> getPersonsByGender(Gender gender);
+  Future<PersonsModel> getAllPersons(int page);
+  Future<PersonsModel> getPersonsByGender(int page, Gender gender);
 }
