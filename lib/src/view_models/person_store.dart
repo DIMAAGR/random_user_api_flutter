@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:random_user_api_flutter/src/models/persons_model.dart';
+import 'package:random_user_api_flutter/src/repositories/interfaces/persons_repository_interface.dart';
 import 'package:random_user_api_flutter/src/repositories/repository/persons_repository.dart';
 
 part 'person_store.g.dart';
@@ -13,6 +14,9 @@ abstract class _PersonStore with Store {
   final PersonsRepository _repository = PersonsRepository();
 
   @observable
+  Gender? gender;
+
+  @observable
   int _page = 0;
 
   @observable
@@ -20,6 +24,15 @@ abstract class _PersonStore with Store {
 
   @observable
   StoreState state = StoreState.uninitialized;
+
+  @action
+  void setGender(Gender gender) {
+    if (gender == Gender.non) {
+      this.gender = null;
+    } else {
+      this.gender = gender;
+    }
+  }
 
   @action
   Future<void> doGetAllUsers() async {

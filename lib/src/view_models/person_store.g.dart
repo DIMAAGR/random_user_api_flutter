@@ -9,6 +9,21 @@ part of 'person_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$PersonStore on _PersonStore, Store {
+  late final _$genderAtom = Atom(name: '_PersonStore.gender', context: context);
+
+  @override
+  Gender? get gender {
+    _$genderAtom.reportRead();
+    return super.gender;
+  }
+
+  @override
+  set gender(Gender? value) {
+    _$genderAtom.reportWrite(value, super.gender, () {
+      super.gender = value;
+    });
+  }
+
   late final _$_pageAtom = Atom(name: '_PersonStore._page', context: context);
 
   @override
@@ -71,9 +86,24 @@ mixin _$PersonStore on _PersonStore, Store {
     return _$doNextPageAsyncAction.run(() => super.doNextPage());
   }
 
+  late final _$_PersonStoreActionController =
+      ActionController(name: '_PersonStore', context: context);
+
+  @override
+  void setGender(Gender gender) {
+    final _$actionInfo = _$_PersonStoreActionController.startAction(
+        name: '_PersonStore.setGender');
+    try {
+      return super.setGender(gender);
+    } finally {
+      _$_PersonStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
+gender: ${gender},
 persons: ${persons},
 state: ${state}
     ''';
