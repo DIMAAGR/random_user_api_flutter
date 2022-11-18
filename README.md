@@ -19,13 +19,16 @@ Nesse projeto você encontra:
  1 - BLOc, MobX, Tripple e Provider(Nativo).
  2 - Sim, já utilizei mas não tenho muito domínio sobre.
  
- 3:  - **Pessoais:** - youtube_share_api_com_bloc: aplicativo de videos do youtube com api do google e BLOc para gerência de estado (em desenvolvimento).
-                     - Reau_hoje: carteira de criptomoedas.
-                     - app_giphy_flutter: App de Pesquisa de Gifs com API do GIPHY usando Flutter!
-                     - Mobx-Relogio-Pomodoro: Mobx - Relógio Pomodoro.
-     - **Para Empresas** - Blusoftech wallet: carteira de criptomoedas com suporte a varias linguas e moedas diferentes
-                         - BM2 Pay: sistema de pagamentos e cambio facilitado para turistas que vão para o paraguai ou que vem para o Brasil.
-                         - FR Inc: sistema de venda de precatórios com chat firebase em tempo real e firemessaging (em desenvolvimento).
+ 3:  
+ - **Pessoais:** 
+   - youtube_share_api_com_bloc: aplicativo de videos do youtube com api do google e BLOc para gerência de estado (em desenvolvimento).
+   - Reau_hoje: carteira de criptomoedas.
+   - app_giphy_flutter: App de Pesquisa de Gifs com API do GIPHY usando Flutter!
+   - Mobx-Relogio-Pomodoro: Mobx - Relógio Pomodoro.
+  - **Para Empresas** 
+    - Blusoftech wallet: carteira de criptomoedas com suporte a varias linguas e moedas diferentes
+    - BM2 Pay: sistema de pagamentos e cambio facilitado para turistas que vão para o paraguai ou que vem para o Brasil.
+    - FR Inc: sistema de venda de precatórios com chat firebase em tempo real e firemessaging (em desenvolvimento).
 
 ----------------------------
 
