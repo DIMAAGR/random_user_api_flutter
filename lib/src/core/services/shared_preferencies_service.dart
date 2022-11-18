@@ -47,4 +47,13 @@ class SharedPreferenciesCacheService {
 
     return listOfPersons;
   }
+
+  // ===========================================================================
+  // Cache of PersonsModel list remover method
+  // ===========================================================================
+  Future<void> removePersonListCacheValues() async {
+    final cache = await _prefs;
+
+    await cache.remove(_personListModelCachedKey);
+  }
 }
