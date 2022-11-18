@@ -30,10 +30,10 @@ Nesse projeto você encontra:
 ----------------------------
 
 ### Imagens
-https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/1.png
-https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/2.png
-https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/3.png
-https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/4.png
+https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/1.png?raw=true
+https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/2.png?raw=true
+https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/3.png?raw=true
+https://github.com/DIMAAGR/random_user_api_flutter/blob/master/images/4.png?raw=true
 
 ----------------------------
 
