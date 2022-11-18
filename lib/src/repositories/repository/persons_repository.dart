@@ -13,7 +13,7 @@ class PersonsRepository extends IPersonsRepository {
 
   @override
   Future<PersonsModel> getAllPersons({int page = 0}) async {
-    Response response = await networking.get(path: '?nat=br&format=json&results=20&page=$page');
+    Response response = await networking.get(path: '?format=json&results=20&page=$page&inc=gender,name,email,picture,nat&nat=br');
 
     switch (response.statusCode) {
       case 200:

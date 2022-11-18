@@ -78,4 +78,9 @@ abstract class _PersonStore with Store {
     }
     state = StoreState.loaded;
   }
+
+  @action
+  Future<void> clearPersonCache() async {
+    await _cacheService.removePersonListCacheValues();
+  }
 }

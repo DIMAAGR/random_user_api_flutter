@@ -95,6 +95,14 @@ mixin _$PersonStore on _PersonStore, Store {
         .run(() => super.getPersonsListFromCache());
   }
 
+  late final _$clearPersonCacheAsyncAction =
+      AsyncAction('_PersonStore.clearPersonCache', context: context);
+
+  @override
+  Future<void> clearPersonCache() {
+    return _$clearPersonCacheAsyncAction.run(() => super.clearPersonCache());
+  }
+
   late final _$_PersonStoreActionController =
       ActionController(name: '_PersonStore', context: context);
 

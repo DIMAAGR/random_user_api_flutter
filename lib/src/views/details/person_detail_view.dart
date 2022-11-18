@@ -44,6 +44,8 @@ class PersonDetailView extends StatelessWidget {
     final personIndex = ModalRoute.of(context)!.settings.arguments as int;
     PersonStore personStore = getIt<PersonStore>();
 
+    print(personStore.persons[personIndex].toJson());
+
     return Scaffold(
       appBar: AppBar(title: const Text('Detalhes')),
       body: SingleChildScrollView(
@@ -64,12 +66,13 @@ class PersonDetailView extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   _titleAndSubtitleRowListWidget(title: 'Email:', subtitle: personStore.persons[personIndex].email!),
-                  _titleAndSubtitleRowListWidget(title: 'Celular:', subtitle: personStore.persons[personIndex].cell!),
-                  _titleAndSubtitleRowListWidget(title: 'Telefone:', subtitle: personStore.persons[personIndex].phone!),
+                  // _titleAndSubtitleRowListWidget(title: 'Celular:', subtitle: personStore.persons[personIndex].cell!),
+                  // _titleAndSubtitleRowListWidget(title: 'Telefone:', subtitle: personStore.persons[personIndex].phone!),
                   _titleAndSubtitleRowListWidget(title: 'Gênero:', subtitle: personStore.persons[personIndex].gender!),
-                  _titleAndSubtitleRowListWidget(title: 'País:', subtitle: personStore.persons[personIndex].location!.country!),
-                  _titleAndSubtitleRowListWidget(title: 'Estado:', subtitle: personStore.persons[personIndex].location!.state!),
-                  _titleAndSubtitleRowListWidget(title: 'Cidade:', subtitle: personStore.persons[personIndex].location!.city!),
+                  _titleAndSubtitleRowListWidget(title: 'Naturalidade:', subtitle: personStore.persons[personIndex].nat!),
+                  //_titleAndSubtitleRowListWidget(title: 'País:', subtitle: personStore.persons[personIndex].location!.country!),
+                  // _titleAndSubtitleRowListWidget(title: 'Estado:', subtitle: personStore.persons[personIndex].location!.state!),
+                  // _titleAndSubtitleRowListWidget(title: 'Cidade:', subtitle: personStore.persons[personIndex].location!.city!),
                 ],
               ),
             )

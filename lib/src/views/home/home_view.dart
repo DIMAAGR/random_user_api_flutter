@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:random_user_api_flutter/src/core/main/get_it.dart';
-import 'package:random_user_api_flutter/src/repositories/interfaces/persons_repository_interface.dart';
 import 'package:random_user_api_flutter/src/view_models/person_store.dart';
 import 'package:random_user_api_flutter/src/views/home/components/person_list_filter.dart';
 import 'package:random_user_api_flutter/src/views/home/components/person_list_view.dart';
