@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_user_api_flutter/src/core/routes/routes.dart';
 
 import 'package:random_user_api_flutter/src/view_models/person_store.dart';
 
@@ -59,6 +60,7 @@ class PersonListView extends StatelessWidget {
                   ),
                   title: Text('${personStore.persons[index].name!.first!} ${personStore.persons[index].name!.last!}'),
                   subtitle: Text(personStore.persons[index].email!),
+                  onTap: () => Navigator.of(context).pushNamed(AppRoutes.details, arguments: index),
                 ),
                 const Divider(indent: 96),
               ],
