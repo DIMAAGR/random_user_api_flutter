@@ -16,8 +16,8 @@ Nesse projeto você encontra:
 
 ----------------------------
 ### Perguntas
- 1 - BLOc, MobX, Tripple e Provider(Nativo).
- 2 - Sim, já utilizei mas não tenho muito domínio sobre.
+ 1. - BLOc, MobX, Tripple e Provider(Nativo). 
+ 2. - Sim, já utilizei mas não tenho muito domínio sobre.
  
  3:  
  - **Pessoais:** 
