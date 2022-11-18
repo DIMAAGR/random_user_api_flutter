@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:random_user_api_flutter/src/view_models/person_store.dart';
 
 class PersonListView extends StatelessWidget {

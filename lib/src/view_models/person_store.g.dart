@@ -86,15 +86,24 @@ mixin _$PersonStore on _PersonStore, Store {
     return _$doNextPageAsyncAction.run(() => super.doNextPage());
   }
 
+  late final _$getPersonsListFromCacheAsyncAction =
+      AsyncAction('_PersonStore.getPersonsListFromCache', context: context);
+
+  @override
+  Future<void> getPersonsListFromCache() {
+    return _$getPersonsListFromCacheAsyncAction
+        .run(() => super.getPersonsListFromCache());
+  }
+
   late final _$_PersonStoreActionController =
       ActionController(name: '_PersonStore', context: context);
 
   @override
-  void setGender(Gender gender) {
+  void changeGender(Gender gender) {
     final _$actionInfo = _$_PersonStoreActionController.startAction(
-        name: '_PersonStore.setGender');
+        name: '_PersonStore.changeGender');
     try {
-      return super.setGender(gender);
+      return super.changeGender(gender);
     } finally {
       _$_PersonStoreActionController.endAction(_$actionInfo);
     }

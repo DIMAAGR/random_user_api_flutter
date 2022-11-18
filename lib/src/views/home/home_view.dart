@@ -21,7 +21,11 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
 
-    personStore.doGetAllUsers();
+    personStore.getPersonsListFromCache().then((_) {
+      if (personStore.persons.isEmpty) {
+        personStore.doGetAllUsers();
+      }
+    });
   }
 
   Widget _showLoadingWidget() => const Center(child: CircularProgressIndicator(color: Colors.grey, strokeWidth: 5));

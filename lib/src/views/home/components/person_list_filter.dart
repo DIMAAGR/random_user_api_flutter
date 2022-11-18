@@ -29,7 +29,7 @@ class PersonListFilter extends StatelessWidget {
         icon: const Icon(Icons.filter_list),
         tooltip: 'Filtrar',
         initialValue: personStore.gender,
-        onSelected: (gender) => personStore.setGender(gender),
+        onSelected: (gender) => personStore.changeGender(gender),
         itemBuilder: (_) => <PopupMenuEntry<Gender>>[
           //
 
