@@ -8,7 +8,7 @@ part 'person_store.g.dart';
 // ignore: library_private_types_in_public_api
 class PersonStore = _PersonStore with _$PersonStore;
 
-enum StoreState { error, isLoading, loaded, uninitialized }
+enum StoreState { error, isLoading, loaded, uninitialized, internetConectionError }
 
 abstract class _PersonStore with Store {
   final PersonsRepository _repository = PersonsRepository();
@@ -20,32 +20,40 @@ abstract class _PersonStore with Store {
   int _page = 0;
 
   @observable
-  List<Results> persons = [];
+  List<Results> _persons = [];
 
   @observable
   StoreState state = StoreState.uninitialized;
 
+  List<Results> get persons {
+    return _persons.where((person) => gender == null || gender!.name == person.gender!).toList();
+  }
+
   @action
   void setGender(Gender gender) {
+    state = StoreState.isLoading;
     if (gender == Gender.non) {
       this.gender = null;
     } else {
       this.gender = gender;
     }
+    state = StoreState.loaded;
   }
 
   @action
   Future<void> doGetAllUsers() async {
     state = StoreState.isLoading;
     PersonsModel model = await _repository.getAllPersons();
-    persons += model.results!;
+    _persons += model.results!;
     state = StoreState.loaded;
   }
 
   @action
   Future<void> doNextPage() async {
+    state = StoreState.isLoading;
     _page++;
     PersonsModel model = await _repository.getAllPersons(page: _page);
-    persons += model.results!;
+    _persons += model.results!;
+    state = StoreState.loaded;
   }
 }

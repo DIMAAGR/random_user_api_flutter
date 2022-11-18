@@ -47,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
             // =====================================================================
             // Show Persons List
             // =====================================================================
-            if (personStore.state == StoreState.loaded) {
+            if (personStore.state == StoreState.loaded || personStore.state == StoreState.isLoading && personStore.persons.isNotEmpty) {
               return PersonListView(personStore: personStore);
             }
 

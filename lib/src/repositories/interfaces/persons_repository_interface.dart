@@ -9,5 +9,4 @@ abstract class IPersonsRepository {
   IPersonsRepository({required this.networking});
 
   Future<PersonsModel> getAllPersons({int page = 0});
-  Future<PersonsModel> getPersonsByGender({int page = 0, required Gender gender});
 }

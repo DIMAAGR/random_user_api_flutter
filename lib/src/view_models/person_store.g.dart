@@ -39,19 +39,19 @@ mixin _$PersonStore on _PersonStore, Store {
     });
   }
 
-  late final _$personsAtom =
-      Atom(name: '_PersonStore.persons', context: context);
+  late final _$_personsAtom =
+      Atom(name: '_PersonStore._persons', context: context);
 
   @override
-  List<Results> get persons {
-    _$personsAtom.reportRead();
-    return super.persons;
+  List<Results> get _persons {
+    _$_personsAtom.reportRead();
+    return super._persons;
   }
 
   @override
-  set persons(List<Results> value) {
-    _$personsAtom.reportWrite(value, super.persons, () {
-      super.persons = value;
+  set _persons(List<Results> value) {
+    _$_personsAtom.reportWrite(value, super._persons, () {
+      super._persons = value;
     });
   }
 
@@ -104,7 +104,6 @@ mixin _$PersonStore on _PersonStore, Store {
   String toString() {
     return '''
 gender: ${gender},
-persons: ${persons},
 state: ${state}
     ''';
   }
